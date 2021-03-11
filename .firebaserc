@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "it-backend": {
+      "hosting": {
+        "applications-front": [
+          "it-backend"
+        ]
+      }
+    }
+  }
+}
