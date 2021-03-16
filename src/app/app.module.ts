@@ -22,6 +22,10 @@ import { CreateApplicationComponent } from './components/account/create-applicat
 import { UserApplicationsComponent } from './components/account/user-applications/user-applications.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatCardModule } from '@angular/material/card';
+import { HeaderComponent } from './components/header/header.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { WrapperComponent } from './components/wrapper/wrapper.component';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,9 @@ import { MatCardModule } from '@angular/material/card';
     AuthComponent,
     AccountComponent,
     CreateApplicationComponent,
-    UserApplicationsComponent
+    UserApplicationsComponent,
+    HeaderComponent,
+    WrapperComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +53,9 @@ import { MatCardModule } from '@angular/material/card';
     MatSelectModule,
     MatIconModule,
     MatBadgeModule,
-    MatCardModule
+    MatCardModule,
+    MatToolbarModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
