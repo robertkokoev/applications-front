@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Application } from '../../../common/types';
 import { Observable } from 'rxjs';
@@ -13,7 +13,7 @@ type ApplicationWithKey = Partial<Application> & { key: string | null };
   templateUrl: './user-applications.component.html',
   styleUrls: ['./user-applications.component.scss']
 })
-export class UserApplicationsComponent implements OnInit {
+export class UserApplicationsComponent {
 
   readonly applicationsRef = this.db.list<Application>('applications');
   readonly applications$: Observable<ApplicationWithKey[]> = this.applicationsRef.snapshotChanges()
@@ -29,15 +29,13 @@ export class UserApplicationsComponent implements OnInit {
     private snackbar: MatSnackBar
   ) { }
 
-  ngOnInit(): void {
-  }
-
   remove(key: string | null): void {
     if (!key) {
       return;
     }
 
-    this.applicationsRef.remove(key).then(() => this.snackbar.open('Заявка удалена', undefined, { duration: 3000 }));
+    this.applicationsRef.remove(key)
+      .then(() => this.snackbar.open('Заявка удалена', undefined, { duration: 3000 }));
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Application } from '../../../common/types';
@@ -10,7 +10,7 @@ import { first } from 'rxjs/operators';
   templateUrl: './create-application.component.html',
   styleUrls: ['./create-application.component.scss']
 })
-export class CreateApplicationComponent implements OnInit {
+export class CreateApplicationComponent {
 
   readonly applicationsRef = this.db.list<Application>('applications');
   readonly form = this.fb.group({
@@ -19,10 +19,11 @@ export class CreateApplicationComponent implements OnInit {
     category: this.fb.control(''),
   });
 
-  constructor(private fb: FormBuilder, private db: AngularFireDatabase, private afAuth: AngularFireAuth) { }
-
-  ngOnInit(): void {
-  }
+  constructor(
+    private fb: FormBuilder,
+    private db: AngularFireDatabase,
+    private afAuth: AngularFireAuth
+  ) { }
 
   create(): void {
     this.afAuth.user.pipe(first()).subscribe(user => {
