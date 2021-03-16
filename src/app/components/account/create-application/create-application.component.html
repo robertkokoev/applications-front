@@ -1,12 +1,12 @@
 <form class="form-grid" [formGroup]="form">
   <mat-form-field appearance="outline">
     <mat-label>Название</mat-label>
-    <input formControlName="name" matInput/>
+    <input formControlName="name" matInput required/>
   </mat-form-field>
 
   <mat-form-field appearance="outline">
     <mat-label>Категория</mat-label>
-    <mat-select formControlName="category">
+    <mat-select formControlName="category" required>
       <mat-option value="first">Тип 1</mat-option>
       <mat-option value="second">Тип 2</mat-option>
       <mat-option value="third">Тип 3</mat-option>
@@ -17,13 +17,21 @@
 
   <mat-form-field appearance="outline">
     <mat-label>Описание</mat-label>
-    <textarea formControlName="description" matInput></textarea>
+    <textarea formControlName="description" matInput required></textarea>
   </mat-form-field>
 
-  <button color="primary" mat-stroked-button>
-    Загрузить фото
-    <mat-icon>file_upload</mat-icon>
+  <button (click)="photo.click()" color="primary" mat-stroked-button>
+    <mat-label>Загрузить фото</mat-label>
+    <mat-icon style="margin-left: 5px;">{{ this.form.value.photo ? 'check' : 'file_upload' }}</mat-icon>
   </button>
 
-  <button (click)="create()" color="primary" style="margin-top: 10px;" mat-flat-button>Создать</button>
+  <input #photo type="file" (change)="selectFile($event)" hidden>
+
+  <button (click)="create()"
+          [disabled]="form.invalid"
+          color="primary"
+          mat-flat-button
+          style="margin-top: 10px;">
+    Создать
+  </button>
 </form>

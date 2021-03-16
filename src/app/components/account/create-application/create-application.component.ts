@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Application } from '../../../common/types';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -14,9 +14,10 @@ export class CreateApplicationComponent {
 
   readonly applicationsRef = this.db.list<Application>('applications');
   readonly form = this.fb.group({
-    name: this.fb.control(''),
-    description: this.fb.control(''),
-    category: this.fb.control(''),
+    name: this.fb.control('', Validators.required),
+    description: this.fb.control('', Validators.required),
+    category: this.fb.control('', Validators.required),
+    photo: this.fb.control(null, Validators.required),
   });
 
   constructor(
@@ -35,4 +36,18 @@ export class CreateApplicationComponent {
     });
   }
 
+  selectFile(event: any): void {
+    const file = event.target.files?.[0];
+
+    if (!file) {
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onload = result => {
+      this.form.controls.photo.setValue(result.target?.result);
+    };
+  }
 }

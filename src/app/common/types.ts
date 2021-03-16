@@ -9,7 +9,7 @@ export interface Application {
   name: string;
   description: string;
   category: string;
-  // photo: ?
+  photo: string;
   status: 'NEW' | 'SOLVED' | 'REJECTED';
   userId: string;
 }
