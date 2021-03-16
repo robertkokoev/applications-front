@@ -1,0 +1,22 @@
+:host ::ng-deep {
+  .mat-badge-content {
+    padding: 3px;
+    text-overflow: initial;
+  }
+}
+
+.grid {
+  display: grid;
+  justify-content: center;
+  padding: 2rem;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.application {
+  display: grid;
+  grid-gap: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+}

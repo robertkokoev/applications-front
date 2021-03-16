@@ -11,4 +11,5 @@ export interface Application {
   category: string;
   // photo: ?
   status: 'NEW' | 'SOLVED' | 'REJECTED';
+  userId: string;
 }

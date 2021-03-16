@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Application } from '../../../common/types';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-create-application',
@@ -17,13 +19,19 @@ export class CreateApplicationComponent implements OnInit {
     category: this.fb.control(''),
   });
 
-  constructor(private fb: FormBuilder, private db: AngularFireDatabase) { }
+  constructor(private fb: FormBuilder, private db: AngularFireDatabase, private afAuth: AngularFireAuth) { }
 
   ngOnInit(): void {
   }
 
   create(): void {
-    this.applicationsRef.push({ ...this.form.value, status: 'NEW' });
+    this.afAuth.user.pipe(first()).subscribe(user => {
+      if (!user) {
+        return;
+      }
+
+      this.applicationsRef.push({ ...this.form.value, status: 'NEW', userId: user.uid });
+    });
   }
 
 }

@@ -19,6 +19,9 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { CreateApplicationComponent } from './components/account/create-application/create-application.component';
+import { UserApplicationsComponent } from './components/account/user-applications/user-applications.component';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,8 @@ import { CreateApplicationComponent } from './components/account/create-applicat
     RegistrationComponent,
     AuthComponent,
     AccountComponent,
-    CreateApplicationComponent
+    CreateApplicationComponent,
+    UserApplicationsComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,9 @@ import { CreateApplicationComponent } from './components/account/create-applicat
     MatSnackBarModule,
     MatTabsModule,
     MatSelectModule,
-    MatIconModule
+    MatIconModule,
+    MatBadgeModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
