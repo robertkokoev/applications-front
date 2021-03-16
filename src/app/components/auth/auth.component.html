@@ -1,0 +1,15 @@
+<main class="grid" [formGroup]="form">
+  <h1>Авторизация</h1>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label>
+    <input formControlName="email" matInput/>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Пароль</mat-label>
+    <input formControlName="password" matInput/>
+  </mat-form-field>
+
+  <button (click)="login()" mat-flat-button color="primary">Войти</button>
+</main>
