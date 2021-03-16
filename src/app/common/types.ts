@@ -4,3 +4,11 @@ export interface UserOutput {
   email: string;
   role: 'ADMIN' | 'USER';
 }
+
+export interface Application {
+  name: string;
+  description: string;
+  category: string;
+  // photo: ?
+  status: 'NEW' | 'SOLVED' | 'REJECTED';
+}

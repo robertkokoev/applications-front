@@ -13,12 +13,20 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthComponent } from './components/auth/auth.component';
+import { AccountComponent } from './components/account/account.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
+import { CreateApplicationComponent } from './components/account/create-application/create-application.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistrationComponent,
-    AuthComponent
+    AuthComponent,
+    AccountComponent,
+    CreateApplicationComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +37,11 @@ import { AuthComponent } from './components/auth/auth.component';
     MatInputModule,
     MatCheckboxModule,
     ReactiveFormsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSnackBarModule,
+    MatTabsModule,
+    MatSelectModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

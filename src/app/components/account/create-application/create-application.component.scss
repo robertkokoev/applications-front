@@ -1,0 +1,6 @@
+.form-grid {
+  display: grid;
+  justify-content: center;
+  padding: 1rem;
+  grid-auto-columns: minmax(300px, 500px);
+}
