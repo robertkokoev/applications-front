@@ -28,6 +28,8 @@ import { WrapperComponent } from './components/wrapper/wrapper.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { DirectivesModule } from './directives/directives.module';
 import { MainComponent } from './components/main/main.component';
+import { CategoryManagementComponent } from './components/account/category-management/category-management.component';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import { MainComponent } from './components/main/main.component';
     UserApplicationsComponent,
     HeaderComponent,
     WrapperComponent,
-    MainComponent
+    MainComponent,
+    CategoryManagementComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +62,7 @@ import { MainComponent } from './components/main/main.component';
     MatCardModule,
     MatToolbarModule,
     MatDividerModule,
+    MatChipsModule,
     DirectivesModule
   ],
   providers: [],

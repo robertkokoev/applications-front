@@ -1,0 +1,27 @@
+<section class="grid">
+  <div class="current">
+    <span>Текущие категории</span>
+    <mat-chip-list>
+      <mat-chip (removed)="remove(category.key)"
+                *ngFor="let category of categories$ | async"
+                removable>
+        {{ category.label }}
+        <mat-icon matChipRemove>cancel</mat-icon>
+      </mat-chip>
+    </mat-chip-list>
+  </div>
+
+  <ng-container [formGroup]="form">
+    <mat-form-field appearance="outline">
+      <mat-label>Название</mat-label>
+      <input formControlName="label" matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Значение</mat-label>
+      <input formControlName="value" matInput>
+    </mat-form-field>
+  </ng-container>
+
+  <button (click)="add()" color="primary" mat-flat-button>Добавить</button>
+</section>

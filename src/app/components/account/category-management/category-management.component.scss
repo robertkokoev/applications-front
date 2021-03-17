@@ -1,0 +1,12 @@
+.grid {
+  display: grid;
+  justify-content: center;
+  grid-auto-columns: minmax(300px, 500px);
+  padding: 1rem;
+}
+
+.current {
+  display: grid;
+  grid-gap: 10px;
+  padding-bottom: 10px;
+}

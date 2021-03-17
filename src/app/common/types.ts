@@ -14,3 +14,8 @@ export interface Application {
   status: 'NEW' | 'SOLVED' | 'REJECTED';
   userId: string;
 }
+
+export interface Category {
+  label: string;
+  value: string;
+}

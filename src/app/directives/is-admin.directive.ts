@@ -17,11 +17,11 @@ export class IsAdminDirective implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.afAuth.user.pipe(
+    this.usersRef.valueChanges().pipe(
       first(),
-      withLatestFrom(this.usersRef.valueChanges())
+      withLatestFrom(this.afAuth.user)
     )
-      .subscribe(([user, users]) => {
+      .subscribe(([users, user]) => {
         const userInArray = users.find(u => u.id === user?.uid);
 
         if (!userInArray) {
