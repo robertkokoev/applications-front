@@ -1,0 +1,30 @@
+<ng-container [ngSwitch]="status">
+  <ng-container *ngSwitchCase="'NEW'">
+    <button *isAdmin="let _, elseTemplate: other"
+            [matMenuTriggerFor]="menu"
+            [ngSwitch]="status"
+            class="category"
+            mat-button>
+      Новая
+      <mat-icon color="accent">new_releases</mat-icon>
+    </button>
+  </ng-container>
+
+  <span class="category category-text" *ngSwitchCase="'SOLVED'">
+    Решена <mat-icon color="primary">check</mat-icon>
+  </span>
+
+  <span class="category category-text" *ngSwitchCase="'REJECTED'">
+    Отклонена <mat-icon color="warn">block</mat-icon>
+  </span>
+</ng-container>
+
+<ng-template #other>
+  Новая
+  <mat-icon color="accent">new_releases</mat-icon>
+</ng-template>
+
+<mat-menu #menu="matMenu">
+  <button (click)="solved()" mat-menu-item>Решена</button>
+  <button (click)="rejected()" mat-menu-item>Отклонена</button>
+</mat-menu>

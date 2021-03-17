@@ -19,12 +19,7 @@
     <textarea formControlName="description" matInput required></textarea>
   </mat-form-field>
 
-  <button (click)="photo.click()" color="primary" mat-stroked-button>
-    <mat-label>Загрузить фото</mat-label>
-    <mat-icon style="margin-left: 5px;">{{ this.form.value.photo ? 'check' : 'file_upload' }}</mat-icon>
-  </button>
-
-  <input #photo type="file" (change)="selectFile($event)" hidden>
+  <app-select-file-button (fileSelected)="form.controls.photo.setValue($event)"></app-select-file-button>
 
   <button (click)="create()"
           [disabled]="form.invalid"

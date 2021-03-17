@@ -1,0 +1,24 @@
+<ng-container [ngSwitch]="data.type">
+  <ng-template ngSwitchCase="SOLVED">
+    <h3 mat-dialog-title>Загрузите фото выполненной работы</h3>
+
+    <mat-dialog-content>
+      <app-select-file-button (fileSelected)="selectFile($event)"></app-select-file-button>
+    </mat-dialog-content>
+  </ng-template>
+
+  <ng-template ngSwitchCase="REJECTED">
+    <h3>Введите причину отклонения</h3>
+
+    <mat-dialog-content>
+      <mat-form-field appearance="outline">
+        <mat-label>Причина</mat-label>
+        <textarea [(ngModel)]="cause" matInput></textarea>
+      </mat-form-field>
+    </mat-dialog-content>
+  </ng-template>
+</ng-container>
+
+<mat-dialog-actions>
+  <button (click)="okay()" mat-stroked-button>Принять</button>
+</mat-dialog-actions>

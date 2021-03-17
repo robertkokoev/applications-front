@@ -37,19 +37,4 @@ export class CreateApplicationComponent {
       this.applicationsRef.push({ ...this.form.value, status: 'NEW', userId: user.uid });
     });
   }
-
-  selectFile(event: any): void {
-    const file = event.target.files?.[0];
-
-    if (!file) {
-      return;
-    }
-
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-
-    reader.onload = result => {
-      this.form.controls.photo.setValue(result.target?.result);
-    };
-  }
 }

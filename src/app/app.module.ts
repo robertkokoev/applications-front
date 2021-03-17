@@ -10,7 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthComponent } from './components/auth/auth.component';
 import { AccountComponent } from './components/account/account.component';
@@ -33,6 +33,11 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { AllApplicationsComponent } from './components/all-applications/all-applications.component';
 import { ApplicationCardComponent } from './components/application-card/application-card.component';
+import { CategoryButtonComponent } from './components/application-card/category-button/category-button.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { SetCauseDialogComponent } from './components/application-card/category-button/set-cause-dialog/set-cause-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { SelectFileButtonComponent } from './common/select-file-button/select-file-button.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +52,10 @@ import { ApplicationCardComponent } from './components/application-card/applicat
     MainComponent,
     CategoryManagementComponent,
     AllApplicationsComponent,
-    ApplicationCardComponent
+    ApplicationCardComponent,
+    CategoryButtonComponent,
+    SetCauseDialogComponent,
+    SelectFileButtonComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +77,10 @@ import { ApplicationCardComponent } from './components/application-card/applicat
     MatChipsModule,
     MatSidenavModule,
     MatListModule,
-    DirectivesModule
+    MatMenuModule,
+    MatDialogModule,
+    DirectivesModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

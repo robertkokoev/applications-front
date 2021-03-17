@@ -1,4 +1,4 @@
-import { Directive, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
+import { Directive, Input, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { UserOutput } from '../common/types';
@@ -6,6 +6,9 @@ import { combineLatest } from 'rxjs';
 
 @Directive({ selector: '[isAdmin]' })
 export class IsAdminDirective implements OnInit {
+
+  @Input('isAdminElseTemplate')
+  elseTemplate?: TemplateRef<any>;
 
   readonly usersRef = this.db.list<UserOutput>('users');
 
@@ -26,10 +29,19 @@ export class IsAdminDirective implements OnInit {
           return;
         }
 
-        userInArray.role === 'ADMIN'
-          ? this.viewContainerRef.createEmbeddedView(this.templateRef)
-          : this.viewContainerRef.clear();
+        if (userInArray.role === 'ADMIN') {
+          this.viewContainerRef.clear();
+          this.viewContainerRef.createEmbeddedView(this.templateRef);
+          return;
+        }
+
+        if (this.elseTemplate) {
+          this.viewContainerRef.clear();
+          this.viewContainerRef.createEmbeddedView(this.elseTemplate);
+          return;
+        }
+
+        this.viewContainerRef.clear();
       });
   }
-
 }

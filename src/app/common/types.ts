@@ -13,6 +13,8 @@ export interface Application {
   photo: string;
   status: 'NEW' | 'SOLVED' | 'REJECTED';
   userId: string;
+  afterPhoto?: string;
+  rejectedCause?: string;
 }
 
 export interface Category {

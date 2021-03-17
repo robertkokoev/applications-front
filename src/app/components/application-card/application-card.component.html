@@ -2,17 +2,7 @@
   <mat-card-title>{{ application.name }}</mat-card-title>
   <mat-card-subtitle>{{ application.category }}</mat-card-subtitle>
 
-  <div class="category" [ngSwitch]="application.status">
-      <span *ngSwitchCase="'NEW'">
-        Новая <mat-icon color="accent">new_releases</mat-icon>
-      </span>
-    <span *ngSwitchCase="'SOLVED'">
-        Решена <mat-icon color="primary">check</mat-icon>
-      </span>
-    <span *ngSwitchCase="'REJECTED'">
-        Отклонена <mat-icon color="warn">block</mat-icon>
-      </span>
-  </div>
+  <app-category-button [applicationKey]="application.key" [status]="application.status"></app-category-button>
 
   <img mat-card-image [src]="application.photo" alt="Photo" height="200px">
 

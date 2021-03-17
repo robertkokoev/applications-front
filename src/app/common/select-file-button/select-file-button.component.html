@@ -1,0 +1,6 @@
+<button (click)="photo.click()" color="primary" mat-stroked-button>
+  <mat-label>Загрузить фото</mat-label>
+  <mat-icon style="margin-left: 5px;">{{ file ? 'check' : 'file_upload' }}</mat-icon>
+</button>
+
+<input #photo type="file" (change)="selectFile($event)" hidden>

@@ -1,0 +1,11 @@
+.category {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.category-text {
+  display: flex;
+  align-items: center;
+  grid-gap: 5px;
+}
