@@ -1,7 +1,7 @@
 <mat-toolbar color="primary" class="grid">
   <span>Applications</span>
 
-  <div class="r-side">
+  <div class="r-side" *isUser="let _, elseTemplate: noUser">
     <a routerLink="/account" mat-button>
       <mat-label>Личный кабинет</mat-label>
       <mat-icon style="margin-left: 5px;">account_circle_outline</mat-icon>
@@ -14,4 +14,18 @@
       <mat-icon style="margin-left: 5px;">logout</mat-icon>
     </button>
   </div>
+
+  <ng-template #noUser>
+    <div class="r-side">
+      <a routerLink="/registration" mat-button>
+        <mat-label>Регистрация</mat-label>
+      </a>
+
+      <mat-divider style="height: 40px; border-color: rgba(0, 0, 0, 0.5)" [vertical]="true"></mat-divider>
+
+      <a routerLink="/auth" mat-button>
+        <mat-label>Вход</mat-label>
+      </a>
+    </div>
+  </ng-template>
 </mat-toolbar>

@@ -26,6 +26,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { WrapperComponent } from './components/wrapper/wrapper.component';
 import { MatDividerModule } from '@angular/material/divider';
+import { DirectivesModule } from './directives/directives.module';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { MatDividerModule } from '@angular/material/divider';
     MatBadgeModule,
     MatCardModule,
     MatToolbarModule,
-    MatDividerModule
+    MatDividerModule,
+    DirectivesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
