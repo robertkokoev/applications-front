@@ -2,7 +2,7 @@ import { Directive, OnInit, TemplateRef, ViewContainerRef } from '@angular/core'
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { UserOutput } from '../common/types';
-import { first, withLatestFrom } from 'rxjs/operators';
+import { withLatestFrom } from 'rxjs/operators';
 
 @Directive({ selector: '[isAdmin]' })
 export class IsAdminDirective implements OnInit {
@@ -18,7 +18,6 @@ export class IsAdminDirective implements OnInit {
 
   ngOnInit(): void {
     this.usersRef.valueChanges().pipe(
-      first(),
       withLatestFrom(this.afAuth.user)
     )
       .subscribe(([users, user]) => {
