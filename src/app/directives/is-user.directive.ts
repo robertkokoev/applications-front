@@ -21,6 +21,7 @@ export class IsUserDirective implements OnInit {
     this.afAuth.user
       .subscribe(u => {
         if (u) {
+          this.viewContainerRef.clear();
           this.viewContainerRef.createEmbeddedView(this.templateRef);
           return;
         }
