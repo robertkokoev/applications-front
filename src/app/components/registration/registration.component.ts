@@ -5,6 +5,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { UserOutput } from '../../common/types';
 import { map, switchMap } from 'rxjs/operators';
 import { from, of } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 type UserInput = UserOutput & { password: string };
 
@@ -26,7 +27,8 @@ export class RegistrationComponent {
   constructor(
     private fb: FormBuilder,
     private db: AngularFireDatabase,
-    private afAuth: AngularFireAuth
+    private afAuth: AngularFireAuth,
+    private snackbar: MatSnackBar
   ) { }
 
   registration(): void {
@@ -37,7 +39,7 @@ export class RegistrationComponent {
         map(users => users.some(u => u.login === formValue.login) ? null : formValue),
         switchMap(value => {
           if (value === null) {
-            alert('Логин занят');
+            this.snackbar.open('Логин занят', undefined, { duration: 5000 });
             return of(null);
           }
 
