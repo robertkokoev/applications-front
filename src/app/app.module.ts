@@ -31,6 +31,8 @@ import { CategoryManagementComponent } from './components/account/category-manag
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { AllApplicationsComponent } from './components/all-applications/all-applications.component';
+import { ApplicationCardComponent } from './components/application-card/application-card.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { MatListModule } from '@angular/material/list';
     HeaderComponent,
     WrapperComponent,
     MainComponent,
-    CategoryManagementComponent
+    CategoryManagementComponent,
+    AllApplicationsComponent,
+    ApplicationCardComponent
   ],
   imports: [
     BrowserModule,

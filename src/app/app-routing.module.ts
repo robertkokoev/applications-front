@@ -8,6 +8,7 @@ import { MainComponent } from './components/main/main.component';
 import { UserApplicationsComponent } from './components/account/user-applications/user-applications.component';
 import { CreateApplicationComponent } from './components/account/create-application/create-application.component';
 import { CategoryManagementComponent } from './components/account/category-management/category-management.component';
+import { AllApplicationsComponent } from './components/all-applications/all-applications.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
           {
             path: 'categories-management',
             component: CategoryManagementComponent
+          },
+          {
+            path: 'all-applications',
+            component: AllApplicationsComponent
           }
         ]
       }

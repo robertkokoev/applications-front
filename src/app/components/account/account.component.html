@@ -4,7 +4,7 @@
       <a routerLink="user-applications" mat-list-item>Мои заявки</a>
       <a routerLink="create-application" mat-list-item>Создание заявки</a>
       <a *isAdmin routerLink="categories-management" mat-list-item>Управление категориями</a>
-<!--      <a routerLink="" mat-list-item>Все заявки</a>-->
+      <a *isAdmin routerLink="all-applications" mat-list-item>Все заявки</a>
     </mat-nav-list>
   </mat-drawer>
 

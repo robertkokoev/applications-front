@@ -19,3 +19,5 @@ export interface Category {
   label: string;
   value: string;
 }
+
+export type ApplicationWithKey = Partial<Application> & { key: string | null };

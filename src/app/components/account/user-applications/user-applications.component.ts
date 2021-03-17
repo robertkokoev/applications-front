@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { Application } from '../../../common/types';
+import { Application, ApplicationWithKey } from '../../../common/types';
 import { Observable } from 'rxjs';
 import { map, withLatestFrom } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
-type ApplicationWithKey = Partial<Application> & { key: string | null };
 
 @Component({
   selector: 'app-user-applications',
