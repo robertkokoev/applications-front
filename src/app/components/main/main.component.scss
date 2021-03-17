@@ -12,3 +12,15 @@
   grid-gap: 1rem;
   grid-template-columns: repeat(4, minmax(300px, 1fr));
 }
+
+.category {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+
+  span {
+    display: flex;
+    align-items: center;
+    grid-gap: 5px;
+  }
+}
