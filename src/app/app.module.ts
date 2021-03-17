@@ -27,6 +27,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { WrapperComponent } from './components/wrapper/wrapper.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { DirectivesModule } from './directives/directives.module';
+import { MainComponent } from './components/main/main.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { DirectivesModule } from './directives/directives.module';
     CreateApplicationComponent,
     UserApplicationsComponent,
     HeaderComponent,
-    WrapperComponent
+    WrapperComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,

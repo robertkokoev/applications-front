@@ -1,19 +1,12 @@
 <section class="grid">
   <mat-card *ngFor="let application of applications$ | async"
-       [matBadge]="application.status === 'NEW' ? 'new' : null"
-       matBadgeColor="accent">
+            [matBadge]="application.status === 'NEW' ? 'new' : null"
+            matBadgeColor="accent">
     <mat-card-title>{{ application.name }}</mat-card-title>
     <mat-card-subtitle>{{ application.category }}</mat-card-subtitle>
 
     <img mat-card-image [src]="application.photo" alt="Photo" height="200px">
 
     <mat-card-content>{{ application.description }}</mat-card-content>
-
-    <mat-card-actions style="margin-bottom: 0;" align="end">
-      <button (click)="remove(application.key)" color="warn" mat-stroked-button>
-        <mat-label>Удалить</mat-label>
-        <mat-icon>close</mat-icon>
-      </button>
-    </mat-card-actions>
   </mat-card>
 </section>

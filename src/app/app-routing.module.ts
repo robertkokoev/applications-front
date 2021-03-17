@@ -4,16 +4,9 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { AuthComponent } from './components/auth/auth.component';
 import { AccountComponent } from './components/account/account.component';
 import { WrapperComponent } from './components/wrapper/wrapper.component';
+import { MainComponent } from './components/main/main.component';
 
 const routes: Routes = [
-  {
-    path: 'registration',
-    component: RegistrationComponent
-  },
-  {
-    path: 'auth',
-    component: AuthComponent
-  },
   {
     path: '',
     component: WrapperComponent,
@@ -21,7 +14,19 @@ const routes: Routes = [
       {
         path: 'account',
         component: AccountComponent
-      }
+      },
+      {
+        path: 'main',
+        component: MainComponent
+      },
+      {
+        path: 'registration',
+        component: RegistrationComponent
+      },
+      {
+        path: 'auth',
+        component: AuthComponent
+      },
     ]
   }
 ];

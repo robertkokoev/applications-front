@@ -1,6 +1,8 @@
 <mat-toolbar color="primary" class="grid">
   <span>Applications</span>
 
+  <a style="justify-self: center" routerLink="/main" mat-button>Главная</a>
+
   <div class="r-side" *isUser="let _, elseTemplate: noUser">
     <a routerLink="/account" mat-button>
       <mat-label>Личный кабинет</mat-label>
