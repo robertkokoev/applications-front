@@ -3,7 +3,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { UserOutput } from '../../common/types';
-import { CachedUserService } from '../../common/cached-user.service';
+import { map, switchMap } from 'rxjs/operators';
+import { from, of } from 'rxjs';
 
 type UserInput = UserOutput & { password: string };
 
@@ -19,29 +20,40 @@ export class RegistrationComponent {
     name: this.fb.control('', Validators.required),
     login: this.fb.control('', Validators.required),
     email: this.fb.control('', Validators.required),
-    password: this.fb.control('', Validators.required),
+    password: this.fb.control('', Validators.required)
   });
 
   constructor(
     private fb: FormBuilder,
     private db: AngularFireDatabase,
-    private afAuth: AngularFireAuth,
-    private cachedUser: CachedUserService
+    private afAuth: AngularFireAuth
   ) { }
 
   registration(): void {
-    const { email, login, name, password }: UserInput = this.form.value;
+    const formValue: UserInput = this.form.value;
 
-    this.afAuth.createUserWithEmailAndPassword(email, password).then(r => {
-      if (!r.user) {
-        return;
-      }
+    this.usersRef.valueChanges()
+      .pipe(
+        map(users => users.some(u => u.login === formValue.login) ? null : formValue),
+        switchMap(value => {
+          if (value === null) {
+            alert('Логин занят');
+            return of(null);
+          }
 
-      const user: UserOutput = { name, email, login, role: 'USER', id: r.user?.uid };
+          return from(this.afAuth.createUserWithEmailAndPassword(value.email, value.password));
+        })
+      )
+      .subscribe(r => {
+        if (!r?.user) {
+          return;
+        }
 
-      this.usersRef.push(user);
-      this.cachedUser.cacheUser(user);
-    });
+        const { login, name, email } = formValue;
+        const user: UserOutput = { name, email, login, role: 'USER', id: r.user.uid };
+
+        this.usersRef.push(user);
+      });
   }
 
 }

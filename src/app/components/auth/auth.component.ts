@@ -3,6 +3,10 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AngularFireDatabase } from '@angular/fire/database';
+import { UserOutput } from '../../common/types';
+import { catchError, filter, first, map, switchMap } from 'rxjs/operators';
+import { from, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-auth',
@@ -11,14 +15,16 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class AuthComponent implements OnInit {
 
+  readonly usersRef = this.db.list<UserOutput>('users');
   readonly form = this.fb.group({
-    email: this.fb.control(''),
+    login: this.fb.control(''),
     password: this.fb.control('')
   });
 
   constructor(
     private fb: FormBuilder,
     private afAuth: AngularFireAuth,
+    private db: AngularFireDatabase,
     private router: Router,
     private snackbar: MatSnackBar
   ) { }
@@ -27,11 +33,19 @@ export class AuthComponent implements OnInit {
   }
 
   login(): void {
-    const { email, password } = this.form.value;
+    const { password, login } = this.form.value;
 
-    this.afAuth.signInWithEmailAndPassword(email, password)
-      .then(() => this.router.navigate(['/account']))
-      .catch(e => this.snackbar.open(e.message, undefined, { duration: 3000 }));
+    this.usersRef.valueChanges()
+      .pipe(
+        first(),
+        map(users => users.find(u => u.login === login)),
+        filter(user => !!user),
+        switchMap(user => from(this.afAuth.signInWithEmailAndPassword(user!.email, password))),
+        catchError(e => {
+          this.snackbar.open(e.message, undefined, { duration: 3000 });
+          return throwError(e);
+        })
+      ).subscribe(() => this.router.navigate(['/account']));
   }
 
 }
