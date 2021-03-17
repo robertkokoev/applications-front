@@ -7,11 +7,10 @@
   <mat-form-field appearance="outline">
     <mat-label>Категория</mat-label>
     <mat-select formControlName="category" required>
-      <mat-option value="first">Тип 1</mat-option>
-      <mat-option value="second">Тип 2</mat-option>
-      <mat-option value="third">Тип 3</mat-option>
-      <mat-option value="fourth">Тип 4</mat-option>
-      <mat-option value="fifth">Тип 5</mat-option>
+      <mat-option *ngFor="let category of categories$ | async"
+                  [value]="category.value">
+        {{ category.label }}
+      </mat-option>
     </mat-select>
   </mat-form-field>
 

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { Application } from '../../../common/types';
+import { Application, Category } from '../../../common/types';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { first } from 'rxjs/operators';
 
@@ -13,6 +13,8 @@ import { first } from 'rxjs/operators';
 export class CreateApplicationComponent {
 
   readonly applicationsRef = this.db.list<Application>('applications');
+  readonly categoriesRef = this.db.list<Category>('categories');
+  readonly categories$ = this.categoriesRef.valueChanges();
   readonly form = this.fb.group({
     name: this.fb.control('', Validators.required),
     description: this.fb.control('', Validators.required),
