@@ -1,5 +1,9 @@
-<section class="grid">
+<section class="grid" *ngIf="(applications$ | async)?.length else noData">
   <app-application-card *ngFor="let application of applications$ | async"
                         [application]="application">
   </app-application-card>
 </section>
+
+<ng-template #noData>
+  <h1 style="padding: 20px; text-align: center">Нет заявок</h1>
+</ng-template>

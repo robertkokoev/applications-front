@@ -1,14 +1,12 @@
-<mat-drawer-container style="height: 100%;">
-  <mat-drawer mode="side" opened>
-    <mat-nav-list>
-      <a routerLink="user-applications" mat-list-item>Мои заявки</a>
-      <a routerLink="create-application" mat-list-item>Создание заявки</a>
-      <a *isAdmin routerLink="categories-management" mat-list-item>Управление категориями</a>
-      <a *isAdmin routerLink="all-applications" mat-list-item>Все заявки</a>
-    </mat-nav-list>
-  </mat-drawer>
+<div class="grid">
+  <mat-nav-list>
+    <a routerLink="user-applications" mat-list-item>Мои заявки</a>
+    <a routerLink="create-application" mat-list-item>Создание заявки</a>
+    <a *isAdmin routerLink="categories-management" mat-list-item>Управление категориями</a>
+    <a *isAdmin routerLink="all-applications" mat-list-item>Все заявки</a>
+  </mat-nav-list>
 
-  <mat-drawer-content>
-    <router-outlet></router-outlet>
-  </mat-drawer-content>
-</mat-drawer-container>
+  <mat-divider [vertical]="true"></mat-divider>
+
+  <router-outlet style="order: 1; display: none"></router-outlet>
+</div>

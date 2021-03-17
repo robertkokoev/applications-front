@@ -4,6 +4,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { Application, Category } from '../../../common/types';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { first } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-create-application',
@@ -25,7 +26,8 @@ export class CreateApplicationComponent {
   constructor(
     private fb: FormBuilder,
     private db: AngularFireDatabase,
-    private afAuth: AngularFireAuth
+    private afAuth: AngularFireAuth,
+    private snackbar: MatSnackBar
   ) { }
 
   create(): void {
@@ -34,7 +36,9 @@ export class CreateApplicationComponent {
         return;
       }
 
-      this.applicationsRef.push({ ...this.form.value, status: 'NEW', userId: user.uid });
+      this.applicationsRef.push({ ...this.form.value, status: 'NEW', userId: user.uid })
+        .then(() => this.form.reset())
+        .then(() => this.snackbar.open('Заявка создана', undefined, { duration: 3000 }));
     });
   }
 }
