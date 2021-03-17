@@ -15,7 +15,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { AuthComponent } from './components/auth/auth.component';
 import { AccountComponent } from './components/account/account.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { CreateApplicationComponent } from './components/account/create-application/create-application.component';
@@ -30,6 +29,8 @@ import { DirectivesModule } from './directives/directives.module';
 import { MainComponent } from './components/main/main.component';
 import { CategoryManagementComponent } from './components/account/category-management/category-management.component';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,6 @@ import { MatChipsModule } from '@angular/material/chips';
     ReactiveFormsModule,
     MatButtonModule,
     MatSnackBarModule,
-    MatTabsModule,
     MatSelectModule,
     MatIconModule,
     MatBadgeModule,
@@ -63,6 +63,8 @@ import { MatChipsModule } from '@angular/material/chips';
     MatToolbarModule,
     MatDividerModule,
     MatChipsModule,
+    MatSidenavModule,
+    MatListModule,
     DirectivesModule
   ],
   providers: [],
